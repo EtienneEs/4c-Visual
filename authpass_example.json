@@ -1,0 +1,80 @@
+{
+    "commands":{
+        "droogleupdate": "True",
+        "lauerupdate": "True",
+        "redbookupdate": "True",
+        "iqviaupdate": "True",
+        "newreference": "False"
+    },
+    "SalesForce": {
+        "login": "your_email@your_company.com",
+        "username": "your_email@your_company.com",
+        "password": "your_secret",
+        "token": "your_secret_token (get from SalesForce)",
+        "sf_org": "https://your_company.salesforce.com/",
+        "global_drug_report": "000000000000 (end of report link)",
+        "isSandbox": 0
+	},
+    "SF-Sandbox": {
+        "username" : "your_email@your_company.com",
+        "password": "your_secret",
+        "isSandbox": 1,
+        "token" : "secret_token",
+        "sf_org" : "https://your_company--test.salesforce.com/"
+    },
+    "filepaths": {
+		"parent": "C:/Users/your_name/your_sharepoint_link/4C/Data",
+        "rawpath": "rawdata",
+        "destpath": "processed"
+    },
+	"corrections":{
+		"^[Tt]he ": "",
+		"German$": "Germany",
+		"Aregentina$": "Argentina",
+		"Holland$": "Netherlands",
+		"US$": "United States of America",
+		"USA$": "United States of America",
+		"United States$": "United States of America",
+		"DE$": "Germany",
+		"EU$": "European Union",
+		"UK$": "United Kingdom",
+		"IT": "Italy",
+		"Italian": "Italy",
+		"LT": "Lithuania",
+		"Chinese": "China"
+ 	},
+    "corrections_iqvia":{
+        "10X3": "30",
+        "10X6": "60",
+        "7X3": "21",
+        "14X2": "28",
+        "10X2": "20",
+        "28X3": "84",
+        "14X4": "56",
+        "28X5": "140",
+        "28X10": "280",
+        "10X7": "70",
+        "30X2": "60",
+        "1X10": "10",
+        "10X12": "120",
+        "28X4": "112"
+
+    },
+    "SQLServer": {
+        "Driver": "{SQL Server}",
+        "Server": "Servername like: XXXX-DEV-XXXX",
+        "Database": "Database Name",
+        "User Name": "App_db_name",
+        "pw": "your_secret"
+    },
+    "DjangoSQLServerSettings":{
+        "ENGINE": "sql_server.pyodbc",
+        "NAME": "Database Name",
+        "HOST": "Servername like: XXXX-DEV-XXXX",
+        "USER": "app_username",
+        "PASSWORD": "your_secret",
+        "OPTIONS": {
+            "driver": "ODBC Driver 17 for SQL Server"
+        }
+    }
+}
