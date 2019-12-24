@@ -8,28 +8,27 @@ This Documentation is about [_4c-Visual_][1], a tool developed by Dr. Etienne Sc
 
 
 
-_Preview of [4c-Visual][1]_
-[![_4c-Visual_](4c-Visual_preview.png)][1]
-
 
 <a name = "Introduction"></a>
-## Introduction
-
-### The Need to simplify our access to Data
+## Introduction - The Need to simplify our access to Data
 
 _Data driven decision making (DDDM)_ has become one of the fundamental concepts of modern businesses. A modern business leverages all its available data in order to take informed decisions. But leveraging all available data is in general difficult and cumbersome as
 the data sources are often decentralized, heterogeneous and chaotic. In order to facilitate the
-access to four different data sources (SalesForce, IQVIA, Redbook & Lauer) [_4c-Visual_][1] has been created. [_4c-Visual_][1] is a combination of a Python script ([4c-update][2]) and the Business Intelligence Tool [Power BI](https://powerbi.microsoft.com/de-de/) (by Microsoft).
+access to four different data sources (SalesForce, IQVIA, Redbook & Lauer) [_4c-Visual_][1] has been created. [_4c-Visual_][1] is a combination of a Python script ([4c-update][2])/an executable and the Business Intelligence Tool [Power BI (by Microsoft)](https://powerbi.microsoft.com/de-de/).
 
 <a name = "4c-update"></a>
 ### 4c-update
-The Python script [4c-update][2]
+The Python script [4c-update][2] is the core piece of this project. It extracts, cleans and
+cross-references the data from the different data sources. _More to come..._
 
 
 <a name = "4c-visual"></a>
 ### 4c-Visual
+_Some explanation about Power Bi_
 
 
+_[4c-Visual][1]_
+[![_4c-Visual_](4c-Visual_preview.png)][1]
 
 
 
@@ -47,24 +46,26 @@ conda env create -f environment.yml
 conda activate clean
 ````
 
+### Credentials & Settings: authpass.json
 Now to the authpass.json file. It contains the necessary credentials and stores some
-settings. An example is given in [authpass_example.json](authpass_example.json)
+settings. An example is given in [authpass_example.json](authpass_example.json).
 
-### commands
+
+#### commands
 Set to "True" if you would like to clean and cross-reference the rawdataset.
 - droogleupdate: Pulls the Data from SalesForce, cleans and cross-references it
 - lauerupdate: Cleans and cross-references the data from Lauer
 - redbookupdate: Cleans and cross-references the data from Redbook
 - iqviaupdate: Cleans and cross-references the data from iqvia  
 
-### "SalesForce"
+#### "SalesForce"
 Contains the Credentials for pulling the Data from Salesforce
 - "global_drug_report" contains the report id of the SalesForce Report
 
-### "SF-Sandbox" - optional
+#### "SF-Sandbox" - optional
 _Optional!!_ Only for development purpose - contains Credentials for a Sandbox.
 
-### "filepaths"
+#### "filepaths"
 Contains the filepaths for 4c-update.
 - parent contains the filepath (to your working directory)
 _I recommend to use a working directory on SharePoint. It will allow you to synchronize your future Power Bi reports._
@@ -72,17 +73,17 @@ _I recommend to use a working directory on SharePoint. It will allow you to sync
 - destpath: Will contain your processed and cross-referenced files
 
 
-### "corrections"
+#### "corrections"
 Contains the corrections for Market Presentation. You can extend this dictionary.
 
-### "corrections_iqvia"
+#### "corrections_iqvia"
 Contains the corrections for the Iqvia Database - correcting some quantities
 
-### "SQLServer" - optional
+#### "SQLServer" - optional
 ___Not needed for 4c-Visual!___ Only for development purpose.
 Contains the Settings for MSSQL Server
 
-### "DjangoSQLServerSettings" - optional
+#### "DjangoSQLServerSettings" - optional
 ___Not needed for 4c-Visual!___ Only for development purpose.
 Contains the Database Settings for the Django Settings file.
 
