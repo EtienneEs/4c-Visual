@@ -7,9 +7,9 @@ This Documentation is about [_4c-Visual_][1], a tool developed by Dr. Etienne Sc
 - [Setup & authpass.json file](#Setup)
 
 
-<figure class="video_container">
-<iframe width="933" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
-</figure>
+
+_Preview of [4c-Visual][1]_
+[![_4c-Visual_](4c-Visual_preview.png)][1]
 
 
 <a name = "Introduction"></a>
@@ -87,7 +87,11 @@ ___Not needed for 4c-Visual!___ Only for development purpose.
 Contains the Database Settings for the Django Settings file.
 
 
+
 <iframe width="933" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+
+
+[//]: # (References)
 
 [1]: [https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9]
 [2]: (4c-update.py)
