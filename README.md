@@ -47,45 +47,51 @@ conda activate clean
 ````
 
 ### Credentials & Settings: authpass.json
-Now to the authpass.json file. It contains the necessary credentials and stores some
-settings. An example is given in [authpass_example.json](authpass_example.json).
+The authpass.json file contains the necessary credentials and stores some
+important settings, which are explained below.  
+_An example is given in [authpass_example.json](authpass_example.json)_.
 
-
-#### commands
+- __commands__  
 Set to "True" if you would like to clean and cross-reference the rawdataset.
-- droogleupdate: Pulls the Data from SalesForce, cleans and cross-references it
-- lauerupdate: Cleans and cross-references the data from Lauer
-- redbookupdate: Cleans and cross-references the data from Redbook
-- iqviaupdate: Cleans and cross-references the data from iqvia  
+    - droogleupdate: Pulls the Data from SalesForce, cleans and cross-references it
+    - lauerupdate: Cleans and cross-references the data from Lauer
+    - redbookupdate: Cleans and cross-references the data from Redbook
+    - iqviaupdate: Cleans and cross-references the data from iqvia
 
-#### "SalesForce"
+
+
+- __"SalesForce"__  
 Contains the Credentials for pulling the Data from Salesforce
-- "global_drug_report" contains the report id of the SalesForce Report
+    - "global_drug_report" contains the report id of the SalesForce Report
 
-#### "SF-Sandbox" - optional
+
+
+- __"SF-Sandbox" - optional__  
 _Optional!!_ Only for development purpose - contains Credentials for a Sandbox.
 
-#### "filepaths"
-Contains the filepaths for 4c-update.
-- parent contains the filepath (to your working directory)
-_I recommend to use a working directory on SharePoint. It will allow you to synchronize your future Power Bi reports._
-- rawdata: Contains your Rawdata
-- destpath: Will contain your processed and cross-referenced files
+
+- __"filepaths"__  
+Contains the file paths for the raw data and processed data.  
+
+    - parent contains the file path (to your working directory)
+    _I recommend to use a working directory on SharePoint. It will allow you to synchronize your future Power Bi reports._
+    - rawdata: Contains your Rawdata
+    - destpath: Will contain your processed and cross-referenced files
 
 
-#### "corrections"
+- __"corrections"__  
 Contains the corrections for Market Presentation. You can extend this dictionary.
 
-#### "corrections_iqvia"
+- __"corrections_iqvia"__  
 Contains the corrections for the Iqvia Database - correcting some quantities
 
-#### "SQLServer" - optional
-___Not needed for 4c-Visual!___ Only for development purpose.
+- __"SQLServer" - optional__  
+_Not needed for 4c-Visual!_ Only for development purpose.
 Contains the Settings for MSSQL Server
 
-#### "DjangoSQLServerSettings" - optional
-___Not needed for 4c-Visual!___ Only for development purpose.
-Contains the Database Settings for the Django Settings file.
+- __"DjangoSQLServerSettings" - optional__  
+    _Not needed for 4c-Visual!_ Only for development purpose.
+    Contains the Database Settings for the Django Settings file.
 
 
 
