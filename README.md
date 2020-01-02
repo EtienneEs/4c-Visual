@@ -101,11 +101,12 @@ The Python script [4c-update][2] is the core piece of this project. It extracts,
 cross-references and saves the data as .csv file for the [4c.pbix][3] Report to be picked up.  
 Each data source is processed in four steps:
 
-- Extraction
-- Clean up
-- Cross-referencing
-- Saving as .csv
+- [Extraction](#Extraction)
+- [Clean up](#Clean_up)
+- [Cross-referencing](#X-referencing)
+- [Saving as .csv](#Saving)
 
+<a name = "Extraction"></a>
 #### Extraction
 
 - Extracting the data from the source  
@@ -119,8 +120,10 @@ __Notes for SalesForce__
 Previous business practice used a SalesForce Report in order to extract the Data from SalesForce.
 For simplicity a similar Report was build and used to extract the Data. [4c-update.py][2] contains a GET request
 which extracts a "csv"-style content, which is loaded into a pandas DataFrame.  
-_If you would like to use a SOQL Query to retrieve your data check out my [SF_connector.py][5]._
+_If you would like to use a SOQL Query to retrieve your data check out my [SF_connector.py][5]. [SF_connector.py][5]
+is part of the private 4c-Portal Project,..._
 
+<a name = "Clean_up"></a>
 #### Clean up
 Not all available data is important and necessary for our business, therefore data is filtered and reduced to the essential informations
 before loading & processing. Additionally Human data entries can be inconsistent and errorprone. In order to reduce errors and redundancy the
@@ -134,6 +137,7 @@ available is corrected, normalized and cleaned.
     - The dictionary "corrections_iqvia" in [authpass.json][6] contains the corrections for the Quantities in the IQVIA dataset.
         This dictionary can be extended.
 
+<a name= "X-referencing"></a>
 #### Cross-referencing
 - loading the Reference File [MasterDrugList.xlx]
 The current Business workflow dictates that new projects/opportunities are entered manually by a
@@ -157,8 +161,11 @@ The Reference columns (Drugname & API) are further appended to either a new or a
     - if "newreference" = True in [authpass.json][6] a new Reference file is generated
     - if "newreference" = False in [authpass.json][6] the existing Reference file is appended
 
+<a name="Saving"></a>
 #### Saving
-All processed datasets are saved as .csv file in the destination folder
+All processed datasets are saved as .csv file in the destination folder defined in [authpass.json][6].
+
+_to come soon:  tips on how to best host .csv files so Power Bi Reports can update ...._
 
 
 
