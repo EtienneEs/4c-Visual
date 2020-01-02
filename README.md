@@ -6,15 +6,9 @@ The _4c-Initiative_ aims to automate, standardize and centralize the Comparator 
 
 - [Introduction](#Introduction)
 - [Setup & authpass.json file](#Setup)
-<<<<<<< HEAD
 - [Core Elements](#Core)
     - [4c-update](#4c-update)
     - [4c-Visual](#4c-visual)
-
-=======
-- [4c-update](#4c-update)
-- [4c-Visual](#4c-visual)
->>>>>>> bd3fab27247331095f9b88891b437073d1cc3170
 
 <a name = "Introduction"></a>
 ## Introduction - The Need to simplify our access to Data
