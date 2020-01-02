@@ -6,10 +6,15 @@ The _4c-Initiative_ aims to automate, standardize and centralize the Comparator 
 
 - [Introduction](#Introduction)
 - [Setup & authpass.json file](#Setup)
+<<<<<<< HEAD
 - [Core Elements](#Core)
     - [4c-update](#4c-update)
     - [4c-Visual](#4c-visual)
 
+=======
+- [4c-update](#4c-update)
+- [4c-Visual](#4c-visual)
+>>>>>>> bd3fab27247331095f9b88891b437073d1cc3170
 
 <a name = "Introduction"></a>
 ## Introduction - The Need to simplify our access to Data
@@ -18,6 +23,16 @@ _Data driven decision making (DDDM)_ has become one of the fundamental concepts 
 the data sources are often decentralized, heterogeneous and chaotic. In order to facilitate the
 access to four different data sources (SalesForce, IQVIA, Redbook & Lauer) [_4c-Visual_][1] has been created. [_4c-Visual_][1] is a combination of a Python script ([4c-update][2])/an executable and the Business Intelligence Tool [Power BI (by Microsoft)](https://powerbi.microsoft.com/de-de/).
 
+<<<<<<< HEAD
+=======
+<div class="fluid-width-video-wrapper">
+<iframe width="933" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9" frameborder="0" allowFullScreen="true">[Link][1]</iframe>
+</div>
+
+[_Open in full screen_][1]
+
+
+>>>>>>> bd3fab27247331095f9b88891b437073d1cc3170
 <a name = "Setup"></a>
 ## Setup - Environment
 
@@ -164,7 +179,6 @@ _[4c-Visual][1]_
 
 
 
-<iframe width="933" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
 
 
 [//]: # (References)
