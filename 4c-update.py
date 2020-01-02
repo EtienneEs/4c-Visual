@@ -29,23 +29,23 @@ if parent.is_dir() == False:
 rawpath = parent / Path(authpass["filepaths"]["rawpath"])
 destpath = parent / Path(authpass["filepaths"]["destpath"])
 
-MDL_file= rawpath / Path("MasterDrugList.xlsx")
-reference_file = parent / destpath / Path("reference.csv")
+MDL_file= rawpath / Path(authpass["filepaths"]["MDL"])
+reference_file = parent / destpath / Path(authpass["filepaths"]["reference"])
 
 # Reading in the Reference Master Drug List file
-MDL = pd.read_excel(MDL_file, sheet_name="IMS CLEAN LIST")
+MDL = pd.read_excel(MDL_file, sheet_name=authpass["filepaths"]["MDL_sheetname"])
 
 
-droogle_file = destpath / Path("droogle2.csv")
+droogle_file = destpath / Path(authpass["filepaths"]["droogle_file"])
 
-lauer_raw = rawpath / Path("Artikelliste_20190917102237.csv")
-lauer_file = destpath / Path("lauer.csv")
+lauer_raw = rawpath / Path(authpass["filepaths"]["lauer_raw"])
+lauer_file = destpath / Path(authpass["filepaths"]["lauer_file"])
 
-redbook_raw = rawpath / Path("REDBOOKSearchResults.csv")
-redbook_file = destpath / Path("redbook.csv")
+redbook_raw = rawpath / Path(authpass["filepaths"]["redbook_raw"])
+redbook_file = destpath / Path(authpass["filepaths"]["redbook_file"])
 
-iqvia_raw = rawpath / Path("MIDAS- Quarterly Sales_1_Sep-09-2019.xlsx")
-iqvia_file = destpath / Path("iqvia.csv")
+iqvia_raw = rawpath / Path(authpass["filepaths"]["iqvia_raw"])
+iqvia_file = destpath / Path(authpass["filepaths"]["iqvia_file"])
 
 corrections=authpass["corrections"]
 
