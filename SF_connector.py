@@ -6,6 +6,13 @@ import re
 
 
 class SFOpps():
+    """
+    Upon instantiation the credentials provided in authpass are used to create
+    a session. If you would like to change the default field_names/columns can be
+    redefined by modifying the .field_names attribute. The default SOQL query
+    can be modified by changing the .soql attribute.
+    In order to run your Query use Instance.get_results().
+    """
     def __init__(self, authpass):
 
         self.authpass = authpass
@@ -26,7 +33,7 @@ class SFOpps():
                                  security_token=self.token,
                                  instance_url=self.instance,
                                  sandbox=self.isSandbox)
-        # Defining report fields we want to have. related tables: e.g. Owner.Name
+        # Defining report fields we want to have .related tables: e.g. Owner.Name
         self.field_names=["Id",
                           "CreatedDate",
                           "OPPORTUNITY_ID__c",
