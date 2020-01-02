@@ -25,7 +25,18 @@
     "filepaths": {
 		"parent": "C:/Users/your_name/your_sharepoint_link/4C/Data",
         "rawpath": "rawdata",
-        "destpath": "processed"
+        "destpath": "processed",
+        "MDL": "MasterDrugList.xlsx",
+        "MDL_sheetname": "IMS CLEAN LIST",
+        "reference": "reference.csv",
+        "droogle_file": "droogle2.csv",
+        "lauer_raw": "Artikelliste_20190917102237.csv",
+        "lauer_file": "lauer.csv",
+        "redbook_raw": "REDBOOKSearchResults.csv",
+        "redbook_file": "redbook.csv",
+        "iqvia_raw": "MIDAS- Quarterly Sales_1_Sep-09-2019.xlsx",
+        "iqvia_file": "iqvia.csv"
+
     },
 	"corrections":{
 		"^[Tt]he ": "",
