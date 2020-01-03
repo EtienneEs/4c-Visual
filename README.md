@@ -8,7 +8,14 @@ The _4c-Initiative_ aims to automate, standardize and centralize the Comparator 
 - [Setup & authpass.json file](#Setup)
 - [Core Elements](#Core)
     - [4c-update](#4c-update)
+        - [Extraction](#Extraction)
+        - [Clean up](#Clean_up)
+        - [Cross-referencing](#X-referencing)
+        - [Saving as .csv](#Saving)
     - [4c-Visual](#4c-visual)
+        - [Distribution](#Distribution)
+        - [Data synchronization](#Sync)
+- [Conclusion](#Conclusion)
 
 <a name = "Introduction"></a>
 ## Introduction - The Need to simplify our access to Data
@@ -22,8 +29,6 @@ access to four different data sources (SalesForce, IQVIA, Redbook & Lauer) [_4c-
 </div>
 
 [_Open in full screen_][1]
-
-
 
 <a name = "Setup"></a>
 ## Setup - Environment
@@ -62,7 +67,6 @@ Contains the Credentials for pulling the Data from Salesforce
 - __"SF-Sandbox" - optional__  
 _Optional!!_ Only for development purpose - contains Credentials for a Sandbox.
 
-
 - __"filepaths"__  
 Contains the file paths for the raw data and processed data.  
 
@@ -70,7 +74,6 @@ Contains the file paths for the raw data and processed data.
     _I recommend to use a working directory on SharePoint. It will allow you to synchronize your future Power Bi reports._
     - rawdata: Contains your Rawdata
     - destpath: Will contain your processed and cross-referenced files
-
 
 - __"corrections"__  
 Contains the corrections for Market Presentation. You can extend this dictionary.
@@ -165,19 +168,67 @@ The Reference columns (Drugname & API) are further appended to either a new or a
 #### Saving
 All processed datasets are saved as .csv file in the destination folder defined in [authpass.json][6].
 
-_to come soon:  tips on how to best host .csv files so Power Bi Reports can update ...._
-
-
+___Hint:___  
+If available use SharePoint or Onedrive as destination folder. This allows PowerBi
+to stay in sync with your (changing) datasets.
 
 <a name = "4c-visual"></a>
 ### 4c-Visual
-_Some explanation about Power Bi ... to be continued..._
+The second core element of this Project is a Power Bi report. Power Bi is an interactive
+Business Intelligence Tool developed by Microsoft ([Official Pages][7]). It allows to easily
+visualize datasets and distribute interactive and visually appealing reports to stakeholders/consumers.
+
+
+Before creating Power Bi Reports one should think about two main aspects:
+
+
+- [Distribution](#Distribution) - _How will the Data be shared ?_
+- [Data synchronization](#Sync) - _Is the data "static" or continously changing ?_
+
+_If the data source is static or you are the only consumer you can skip this part_
+
+<a name = "Distribution"></a>
+#### Distribution
+
+
+According to the documentation of Power Bi it is advised to create a Report with
+Power Bi Desktop, publish it to a workspace and further share/distribute the Reports by
+publishing the app.
+
+1. Create a Power Bi Report with Power Bi Desktop
+2. Publish to a (new created) workspace
+3. Distribute via an app
+
+If it is intended to share the data with a larger consumer/stakeholder group and not all of the users
+possess a Power Bi Pro license it is advised to create a Premium Workspace (has a diamond symbol next to it - which means it is hosted on a Premium Node). The Premium Workspace allows to share/distribute the reports/app also to consumers/stakeholders without Power Bi Pro license.  
+
+If all consumers/stakeholders are Power Bi Pro Users (possess a Power Bi license) one can easily
+share the Reports or the App of any workspace (no Premium necessary).
+
+_Hint:_  
+Larger companies often have the Premium Server capabilities and it is "quite" easy to receive a
+Power Bi Premium workspace.
+_Note for TF: I found the contact person via Yammer group about Power Bi, searching for
+Premium. IT Service portal: Service Catalog -- Aplication Requests -- Application Access -- "Power Bi Premium"_
+
+<a name = "Sync"></a>
+#### Data synchronization
+If the data is dynamic it is advised to store the processed data on SharePoint or OneDrive.
+This will allow Power Bi to update and synchronize the distributed data. (Scheduled Refresh, Manual Refresh).
+
+
+<a name = "Conclusion"></a>
+## Conclusion
+The combination of Python to pull, cross-reference and process the data together with Power Bi to visualize and distribute the data in a consumer-friendly way is a very powerful tool to enable data
+driven decision making. This documentation can be used as a guideline to develop a customized Business
+Intelligence Tool for your needs.
+
+_If you would like to create an executable and schedule the executable have a look at https://github.com/EtienneEs/Easy-scripts/tree/master/autocopy#Appmaker. Simply install pyinstaller into your current environment and follow the instructinos how to schedule the executable._
+
+If you have any questions please feel free to contact me.  
 
 _[4c-Visual][1]_
 [![_4c-Visual_](4c-Visual_preview.png)][1]
-
-
-
 
 
 [//]: # (References)
@@ -188,3 +239,4 @@ _[4c-Visual][1]_
 [4]: (MasterDrugList.xlsx)
 [5]: (SF_Connector.py)
 [6]: (authpass_example.json)
+[7]: (https://powerbi.microsoft.com/de-de/)
