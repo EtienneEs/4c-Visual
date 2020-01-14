@@ -75,6 +75,11 @@ Contains the file paths for the raw data and processed data.
     - rawdata: Contains your Rawdata
     - destpath: Will contain your processed and cross-referenced files
 
+- __"iqvia_settings"__
+    - iqvia_fix_columns: Number of fixed columns until human readable Standard Units per Quarter
+        _If you extend the IQVIA Report make sure to extend column count in Power Bi Report._
+    - iqvia_quarters: If a new Quarter is available please adjust.
+
 - __"corrections"__  
 Contains the corrections for Market Presentation. You can extend this dictionary.
 

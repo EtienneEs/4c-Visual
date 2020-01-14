@@ -47,7 +47,10 @@ redbook_file = destpath / Path(authpass["filepaths"]["redbook_file"])
 iqvia_raw = rawpath / Path(authpass["filepaths"]["iqvia_raw"])
 iqvia_file = destpath / Path(authpass["filepaths"]["iqvia_file"])
 
+iqvia_fix_columns=authpass["iqvia_settings"]["iqvia_fix_columns"]
+iqvia_quarters = authpass["iqvia_settings"]["iqvia_quarters"]
 corrections=authpass["corrections"]
+
 
 
 # Salesforce Report ID
@@ -363,7 +366,7 @@ def clean_redbook(redbook_raw, redbook_file, reference):
 
     return (redbook, reference)
 
-def clean_iqvia(iqvia_raw, iqvia_file, reference, corrections_iqvia):
+def clean_iqvia(iqvia_raw, iqvia_file, reference, corrections_iqvia, fix_columns, quarters):
 
     """
     Reading in the IQVIA dataset.
@@ -393,8 +396,8 @@ def clean_iqvia(iqvia_raw, iqvia_file, reference, corrections_iqvia):
     # Unpivoting Standard Units per Quarter
     print("Unpivoting Standard Units per Quarter")
     iqvia_unit=pd.melt(iqvia,
-                    id_vars=iqvia.columns[0:7],
-                    value_vars=iqvia.columns[7:20],
+                    id_vars=iqvia.columns[0:fix_columns],
+                    value_vars=iqvia.columns[fix_columns:(fix_columns+quarters)],
                     var_name="Quarter",
                     value_name="Standard Units")
 
@@ -402,17 +405,19 @@ def clean_iqvia(iqvia_raw, iqvia_file, reference, corrections_iqvia):
     # Unpivoting Price per Quarter
     print("Unpivoting Price per Quarter")
     iqvia_price=pd.melt(iqvia,
-                     id_vars=iqvia.columns[0:7],
-                     value_vars=iqvia.columns[20:],
+                     id_vars=iqvia.columns[0:fix_columns],
+                     value_vars=iqvia.columns[fix_columns+quarters:],
                      var_name="Quarter",
                      value_name = "Price_US")
 
     # Cleaning up the Quarters in the unit dataframe
-    iqvia_unit["Quarter"]=iqvia_unit["Quarter"].str.replace("_.*","")
+    #iqvia_unit["Quarter"]=iqvia_unit["Quarter"].str.replace("_.*","")
+    iqvia_unit["Quarter"]=iqvia_unit["Quarter"].str.replace(".*\n","")
     # Cleaning up the Quarters in the price dataframe
-    iqvia_price["Quarter"]=iqvia_price["Quarter"].str.replace("_.*", "")
+    #iqvia_price["Quarter"]=iqvia_price["Quarter"].str.replace("_.*", "")
+    iqvia_price["Quarter"]=iqvia_price["Quarter"].str.replace(".*\n","")
     # merging the dataframes:
-    iqvia=pd.merge(iqvia_unit, iqvia_price)
+    iqvia=pd.merge(iqvia_unit, iqvia_price, on=list(iqvia_unit.columns[0:fix_columns+1]))
     # Dropping Nan row-wise
     iqvia=iqvia.dropna(0)
 
@@ -548,7 +553,9 @@ def main():
         iqvia, reference = clean_iqvia(iqvia_raw=iqvia_raw,
                                        iqvia_file=iqvia_file,
                                        reference=reference,
-                                       corrections_iqvia=authpass["corrections_iqvia"])
+                                       corrections_iqvia=authpass["corrections_iqvia"],
+                                       fix_columns = iqvia_fix_columns,
+                                       quarters = iqvia_quarters)
 
 
     # Saving reference file
