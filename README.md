@@ -239,9 +239,9 @@ _[4c-Visual][1]_
 [//]: # (References)
 
 [1]: https://app.powerbi.com/view?r=eyJrIjoiMTVjOTc5MGQtMWI1Zi00OTcxLWI5MGYtZmExMmJiODYxMzc0IiwidCI6ImI2N2Q3MjJkLWFhOGEtNDc3Ny1hMTY5LWViZWI3YTZhM2I2NyIsImMiOjN9
-[2]: (4c-update.py)
-[3]: (4c_showcase.pbix)
-[4]: (MasterDrugList.xlsx)
-[5]: (SF_Connector.py)
-[6]: (authpass_example.json)
-[7]: (https://powerbi.microsoft.com/de-de/)
+[2]: 4c-update.py
+[3]: 4c_showcase.pbix
+[4]: MasterDrugList.xlsx
+[5]: SF_Connector.py
+[6]: authpass_example.json
+[7]: https://powerbi.microsoft.com/de-de/
