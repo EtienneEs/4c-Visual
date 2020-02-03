@@ -35,7 +35,7 @@ reference_file = parent / destpath / Path(authpass["filepaths"]["reference"])
 # Reading in the Reference Master Drug List file
 MDL = pd.read_excel(MDL_file, sheet_name=authpass["filepaths"]["MDL_sheetname"])
 
-
+droogle_raw = rawpath / Path(authpass["filepaths"]["droogle_raw"])
 droogle_file = destpath / Path(authpass["filepaths"]["droogle_file"])
 
 lauer_raw = rawpath / Path(authpass["filepaths"]["lauer_raw"])
@@ -195,16 +195,16 @@ def append_referencelist(reference, dataframe):
     df = pd.merge(reference, addition, how="outer")
     return df
 
-# Droogle:
-def cleanup_droogle(username, password, token, sf_org, report_id, droogle_file, reference, corrections):
+def get_from_SF(username=username, password=password, token=token, sf_org=sf_org, report_id=report_id):
     """
-    Complete droogle cleanup. First "Droogle" Data is pulled from SalesForce using
-    a predefined SalesForce Report and with the use of request.get(). The dataset is further
-    loaded into a pandas dataframe. The dataset is further cleaned with correcting entries function.
-    The DataFrame is cross-referenced and saved as .csv file.
+    Pulls SalesForce Report (report_id) and transforms it into a pandas Dataframe.
+    Returns the pandas Dataframe
+    username: string
+    password: string
+    token: string (get from SF)
+    sf_org: string
+    Returns: dataframe
     """
-
-    corrections = corrections
 
     sf = Salesforce(username=username,
                 password=password,
@@ -221,6 +221,24 @@ def cleanup_droogle(username, password, token, sf_org, report_id, droogle_file, 
     droogle = pd.read_csv(StringIO(new_report))
     # Getting Rid of the Confidential warnings and copyright stuff
     droogle.drop(droogle.tail(5).index,inplace=True)
+    return droogle
+
+# Droogle:
+def cleanup_droogle(droogle, reference, droogle_file=droogle_file, corrections=corrections):
+    """
+    Complete droogle cleanup. First the entries in Market Presentation are corrected & cleaned.
+    Further the Drug name is crossreferenced with the MasterDrugList (via crossreferencing function).
+    The reference list is further appended to contain also not-MDL entries from Droogle.
+    The DataFrame is saved as .csv file.
+    The function returns the new reference file and droogle.
+    droogle: DataFrame
+    reference: DataFrame,
+    droogle_file = string (destination of the processed droogle)
+    corrections = dictionary
+    Returns: touple (droogle, reference)
+    """
+
+
 
     # Replacing weird values in Market presentation:
     correcting_entries(droogle["Market Presentation"], corrections, inplace=True)
@@ -518,15 +536,23 @@ def main():
 
         print("\nCleaning droogle")
         print("-"*20)
+        if authpass["commands"]["bypassSF"]=="True":
+            print("Bypassing direct pull from SF")
+            # Reading in the droogle.csv data
+            droogle_raw_df = pd.read_csv(droogle_raw)
+            # Getting rid of confidentiality note
+            droogle_raw_df.drop(droogle_raw_df.tail(5).index,inplace=True)
+            # Cross-referencing Droogle
+            droogle, reference = cleanup_droogle(droogle = droogle_raw_df, reference = reference)
+        elif authpass["commands"]["bypassSF"]=="False":
+            print("Pulling Data from SF")
+            droogle_raw_df = get_from_SF()
+            droogle, reference = cleanup_droogle(droogle_raw_df, reference = reference)
 
-        droogle, reference = cleanup_droogle(username=username,
-                                             password=password,
-                                             token=token,
-                                             sf_org=sf_org,
-                                             report_id=report_id,
-                                             droogle_file=droogle_file,
-                                             reference=reference,
-                                             corrections=corrections)
+        else:
+            print("droogle raw data has not been provided")
+
+
 
     # Lauer
     if authpass["commands"]["lauerupdate"]=="True":

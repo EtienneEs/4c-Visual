@@ -1,6 +1,7 @@
 {
     "commands":{
         "droogleupdate": "True",
+        "bypassSF": "True",
         "lauerupdate": "True",
         "redbookupdate": "True",
         "iqviaupdate": "True",
@@ -29,6 +30,7 @@
         "MDL": "MasterDrugList.xlsx",
         "MDL_sheetname": "IMS CLEAN LIST",
         "reference": "reference.csv",
+        "droogle_raw": "report1580308157952.csv",
         "droogle_file": "droogle2.csv",
         "lauer_raw": "Artikelliste_20190917102237.csv",
         "lauer_file": "lauer.csv",
