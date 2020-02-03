@@ -208,7 +208,9 @@ def get_from_SF(username=username, password=password, token=token, sf_org=sf_org
 
     sf = Salesforce(username=username,
                 password=password,
-                security_token=token)
+                security_token=token,
+                instance_url=sf_org
+                )
     sf_org=sf_org
     report_id=report_id
 
@@ -233,8 +235,8 @@ def cleanup_droogle(droogle, reference, droogle_file=droogle_file, corrections=c
     The function returns the new reference file and droogle.
     droogle: DataFrame
     reference: DataFrame,
-    droogle_file = string (destination of the processed droogle)
-    corrections = dictionary
+    droogle_file: string (destination of the processed droogle)
+    corrections: dictionary
     Returns: touple (droogle, reference)
     """
 
